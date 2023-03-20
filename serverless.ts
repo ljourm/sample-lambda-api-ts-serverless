@@ -41,6 +41,11 @@ const serverlessConfiguration: AWS = {
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,
+      // NOTE: esbuild 0.17系にあげるとエラーになる
+      // https://github.com/floydspace/serverless-esbuild/pull/440
+      // watch: {
+      //   pattern: ['src/**/*.ts'],
+      // },
     },
   },
 };
