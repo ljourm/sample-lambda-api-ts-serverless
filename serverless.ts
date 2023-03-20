@@ -22,7 +22,7 @@ const serverlessConfiguration: AWS = {
       handler: "src/functions/hello/handler.call",
       events: [
         {
-          http: {
+          httpApi: {
             method: '*',
             path: '*',
           }
