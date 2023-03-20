@@ -1,9 +1,9 @@
 import { APIGatewayEvent, Context } from 'aws-lambda';
-import createAPI from 'lambda-api';
+import createAPI, { Request, Response } from 'lambda-api';
 
 const api = createAPI();
 
-api.get('/status', async (req, res) => {
+api.get('/status', async (req: Request, res: Response) => {
   return { status: 'ok' };
 });
 
