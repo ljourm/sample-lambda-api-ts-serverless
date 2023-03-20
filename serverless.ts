@@ -1,7 +1,5 @@
 import type { AWS } from '@serverless/typescript';
 
-import hello from '@functions/hello';
-
 const serverlessConfiguration: AWS = {
   service: 'sample-lambda-api-ts-serverless',
   frameworkVersion: '3',
@@ -19,7 +17,19 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello },
+  functions: {
+    hello:{
+      handler: "src/functions/hello/handler.call",
+      events: [
+        {
+          http: {
+            method: '*',
+            path: '*',
+          }
+        },
+      ],
+    },
+  },
   package: { individually: true },
   custom: {
     esbuild: {
