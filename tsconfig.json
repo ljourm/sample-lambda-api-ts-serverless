@@ -11,11 +11,7 @@
     "outDir": "lib"
   },
   "include": ["src/**/*.ts", "serverless.ts"],
-  "exclude": [
-    "node_modules/**/*",
-    ".serverless/**/*",
-    ".vscode/**/*"
-  ],
+  "exclude": ["node_modules/**/*", ".serverless/**/*", ".vscode/**/*"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }
