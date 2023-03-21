@@ -7,5 +7,8 @@ module.exports = {
   parserOptions: {
     project: "./tsconfig.json",
   },
-  rules: {},
+  rules: {
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+  },
 };
