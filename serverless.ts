@@ -29,6 +29,16 @@ const serverlessConfiguration: AWS = {
           },
         },
       ],
+      destinations: {
+        // onSuccess: {
+        //   type: "sns",
+        //   arn: { Ref: "!Ref snsTopic" },
+        // },
+        onFailure: {
+          type: "sns",
+          arn: { Ref: "!GetAtt MyCustomTopic.arn" },
+        },
+      },
     },
   },
   package: { individually: true },
@@ -47,6 +57,14 @@ const serverlessConfiguration: AWS = {
       // watch: {
       //   pattern: ['src/**/*.ts'],
       // },
+    },
+  },
+  resources: {
+    Resources: {
+      snsTopic: {
+        Type: "AWS::SNS::Topic",
+        Properties: { TopicName: "MyCustomTopic" },
+      },
     },
   },
 };
