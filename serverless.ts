@@ -1,7 +1,7 @@
 import type { AWS } from "@serverless/typescript";
 
 const serverlessConfiguration: AWS = {
-  service: "sample-lambda-api-ts-serverless",
+  service: "sample-lambda-api-ts",
   frameworkVersion: "3",
   plugins: ["serverless-esbuild", "serverless-offline"],
   provider: {
