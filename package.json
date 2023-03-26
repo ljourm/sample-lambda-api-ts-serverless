@@ -4,6 +4,8 @@
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
+    "deploy": "sls deploy",
+    "offline": "sls offline --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:prettier": "prettier --check .",
     "fix:prettier": "prettier --write .",
