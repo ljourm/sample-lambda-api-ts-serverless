@@ -8,6 +8,7 @@ const serverlessConfiguration: AWS = {
     name: "aws",
     region: "ap-northeast-1",
     runtime: "nodejs18.x",
+    memorySize: 128,
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
