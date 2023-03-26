@@ -1,4 +1,4 @@
-import { type APIGatewayEvent, type Context } from "aws-lambda";
+import { type Callback, type APIGatewayEvent, type Context } from "aws-lambda";
 import createAPI from "lambda-api";
 import { setErrorHandler } from "./middlewares/error";
 import { setRoutes } from "./routes";
@@ -10,6 +10,6 @@ setErrorHandler(api);
 
 api.routes(true);
 
-exports.call = async (event: APIGatewayEvent, context: Context) => {
-  return await api.run(event, context);
+exports.call = (event: APIGatewayEvent, context: Context, callback: Callback) => {
+  api.run(event, context, callback);
 };
