@@ -12,6 +12,13 @@ const serverlessConfiguration: AWS = {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
     },
+    // iamRoleStatements: [
+    //   {
+    //     Effect: "Allow",
+    //     Action: "sns:Publish",
+    //     Resource: "arn:aws:sns:ap-northeast-1:*:sample-lambda-api-ts-notification",
+    //   },
+    // ],
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
@@ -49,6 +56,14 @@ const serverlessConfiguration: AWS = {
       // },
     },
   },
+  // resources: {
+  //   Resources: {
+  //     snsTopic: {
+  //       Type: "AWS::SNS::Topic",
+  //       Properties: { TopicName: "sample-lambda-api-ts-notification" },
+  //     },
+  //   },
+  // },
 };
 
 module.exports = serverlessConfiguration;
