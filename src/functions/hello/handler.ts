@@ -1,11 +1,10 @@
 import { type APIGatewayEvent, type Context } from "aws-lambda";
-import createAPI, { type Request, type Response } from "lambda-api";
+import createAPI from "lambda-api";
+import { setRoutes } from "./routes";
 
 const api = createAPI({ logger: true });
 
-api.get("/status", (_req: Request, _res: Response) => {
-  return { status: "ok" };
-});
+setRoutes(api);
 
 api.routes(true);
 
