@@ -1,9 +1,9 @@
 import { type Request, type API } from "lambda-api";
-import { getCloudWatchLogGroupUrl } from "~/lib/cloudWatch/url";
+import { getCloudWatchLogStreamUrlByLambda } from "~/lib/cloudWatch/lambda";
 import { notifySlack } from "~/lib/slack/notify";
 
 const buildErrorText = (name: string, message: string, req: Request): string => {
-  const logUrl = !process.env.IS_OFFLINE && getCloudWatchLogGroupUrl(req.context);
+  const logUrl = !process.env.IS_OFFLINE && getCloudWatchLogStreamUrlByLambda(req.context);
 
   return `
 [Hello API Error Notification]
