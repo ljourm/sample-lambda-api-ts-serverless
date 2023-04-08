@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import type { AWS } from "@serverless/typescript";
 
 const serverlessConfiguration: AWS = {
@@ -20,9 +21,11 @@ const serverlessConfiguration: AWS = {
     //     Resource: "arn:aws:sns:ap-northeast-1:*:sample-lambda-api-ts-notification",
     //   },
     // ],
+    stage: "${opt:stage, self:custom.defaultStage}",
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
+      SLACK_WEBHOOK_URI: "${self:custom.environmentFile.${self:provider.stage}.SLACK_WEBHOOK_URI}",
     },
   },
   // import the function via paths
@@ -41,6 +44,11 @@ const serverlessConfiguration: AWS = {
   },
   package: { individually: true },
   custom: {
+    defaultStage: "dev",
+    environmentFile: {
+      dev: "${file(./environments/dev.yml)}",
+      prd: "${file(./environments/prd.yml)}",
+    },
     esbuild: {
       bundle: true,
       minify: false,
